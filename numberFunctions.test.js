@@ -25,6 +25,12 @@ describe( "getLargest", () => {
             expect(getLargest(...arr)).toEqual(expected);
         })  
     })
+
+    describe('It reports invalid inputs correctly', () => { 
+        expect(() => {
+            getLargest(1,2)
+        }).toThrow("Error: all inputs must have a value.")
+    })
 })
 
 describe ("getSmallest", () => {
@@ -42,4 +48,17 @@ describe ("getSmallest", () => {
             expect(getSmallest(...arr)).toEqual(expected);
         }) 
      })
+     describe("It handles extreme inputs succesfully", () => {
+        each([
+            [["a",2,3], NaN],
+
+        ]).test("%s -> %s", (arr, expected) => {
+            expect(getSmallest(...arr)).toEqual(expected);
+        })  
+    })
+    describe('It reports invalid inputs correctly', () => { 
+        expect(() => {
+            getSmallest(1,2)
+        }).toThrow("Error: all inputs must have a value.")
+    })
 })
